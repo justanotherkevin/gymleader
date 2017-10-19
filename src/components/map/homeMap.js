@@ -1,11 +1,13 @@
 import React from 'react';
 
-const homeMap = React.createClass({
+class HomeMap extends React.Component {
     render() {
         return (
             <div className="home_map">
-                <p>this is where the map will be </p> 
+                <hr/>
+                <p>this is where the map will be </p>
             </div>
         )
     }
-})
+};
+export default HomeMap
