@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Switch, Route, BrowserRouter,Link } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-import Home from './components/Home';
-import Gym from './components/Gym';
+import Home from './screens/Home';
+import Gym from './screens/Gym';
 
 const About = () => (
   <div>
