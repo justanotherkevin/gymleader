@@ -1,6 +1,9 @@
-import React, {Component} from 'react';
-import {FIREconfig} from '../config/fireConfig';
+import React, { Component } from 'react';
+import { FIREconfig } from '../config/fireConfig';
 import firebase from 'firebase/app';
+import 'firebase/database';
+
+import GymForm from '../components/gymform/gymForm';
 
 class Gym extends Component {
     constructor(props) {
@@ -10,16 +13,26 @@ class Gym extends Component {
         };
 
         this.app = firebase.initializeApp(FIREconfig);
-        this.db = this.app.database().ref.child('gyms');
+        this.db = this.app.database().ref().child('gyms');
         this.addGym = this.addGym.bind(this)
     };
 
     componentWillMount() {
-        const previousGyms = this.state.gyms
+        const currentGyms = this.state.gyms
+        // when you add something to the DB('child_added') it then set the state again
+        this.db.on('child_added', snap => {
+            currentGyms.push({
+                id: snap.key,
+            })
+        })
+        this.setState({
+            gyms: currentGyms
+        })
     }
 
     addGym(gym) {
         // gym need to be an object with ID and stuff. ex. {id:1, name: 'kickass'}
+        debugger
         const currentGyms = this.state.gyms;
         currentGyms.push(gym);
         this.setState({
@@ -31,6 +44,7 @@ class Gym extends Component {
         return (
             <div>
                 <h1>This is the Gym</h1>
+                <GymForm addGym = { this.addGym }/>
             </div>
         );
     }
