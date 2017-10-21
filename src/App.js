@@ -1,25 +1,15 @@
 import React from 'react';
 import { Route, BrowserRouter, Link } from 'react-router-dom';
-import logo from './logo.svg';
+import Header from './components/header'
 import './App.css';
 
 import Home from './screens/Home';
 import Gym from './screens/Gym';
 
-const About = () => (
-  <div>
-    <h2>About</h2>
-  </div>
-)
-
 const App = () => (
   <BrowserRouter>
     <div>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/gym">Gym</Link></li>
-      </ul>
-
+      <Header/>
       <hr/>
 
       <Route exact path="/" component={Home}/>
