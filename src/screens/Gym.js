@@ -32,19 +32,14 @@ class Gym extends Component {
 
     addGym(gym) {
         // gym need to be an object with ID and stuff. ex. {id:1, name: 'kickass'}
-        debugger
-        const currentGyms = this.state.gyms;
-        currentGyms.push(gym);
-        this.setState({
-            gyms: currentGyms
-        })
+        this.db.push().set({ gymName: gym});
     }
 
     render() {
         return (
             <div>
                 <h1>This is the Gym</h1>
-                <GymForm addGym = { this.addGym }/>
+                <GymForm addGym={this.addGym}/>
             </div>
         );
     }
