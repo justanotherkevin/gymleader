@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FIREconfig } from '../config/fireConfig';
+import Fire from '../config/fireConfig';
+
 import firebase from 'firebase/app';
 import 'firebase/database';
 
@@ -12,10 +13,9 @@ class Gym extends Component {
         this.state = {
             gyms: [],
         };
-
-        this.app = firebase.initializeApp(FIREconfig);
-        this.db = this.app.database().ref().child('gyms');
+        this.db = Fire.database().ref().child('gyms');
         this.addGym = this.addGym.bind(this)
+
     };
 
     componentWillMount() {
@@ -44,7 +44,7 @@ class Gym extends Component {
             <div>{
                 this.state.gyms.map( (gym) => {
                     return (
-                        <GymInfo gymId={ gym.id } gymName={ gym.name } />
+                        <GymInfo key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
                     )
                 })
             }</div>
