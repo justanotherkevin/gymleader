@@ -24,12 +24,13 @@ class GymForm extends Component {
         return(
             <div className="gymForm_wrapper">
                 <input className="gymForm"
-                    placeholder="add a gym..."
+                    placeholder="enter a gym name"
                     value={this.state.newGymInfo}
                     onChange={this.handleUserInput}
                 />
-            <button className="gymForm_button"
-                onClick={this.handleUserSubmit}>gym button</button>
+                <button className="gymForm_button"
+                    onClick={this.handleUserSubmit}
+                >Add gym button</button>
             </div>
         )
     };
