@@ -3,6 +3,7 @@ import { FIREconfig } from '../config/fireConfig';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
+import GymInfo from '../components/gymInfo/gymInfo';
 import GymForm from '../components/gymform/gymForm';
 
 class Gym extends Component {
@@ -23,10 +24,11 @@ class Gym extends Component {
         this.db.on('child_added', snap => {
             currentGyms.push({
                 id: snap.key,
+                name: snap.val().gymName,
             })
-        })
-        this.setState({
-            gyms: currentGyms
+            this.setState({
+                gyms: currentGyms
+            })
         })
     }
 
@@ -39,6 +41,13 @@ class Gym extends Component {
         return (
             <div>
                 <h1>This is the Gym</h1>
+            <div>{
+                this.state.gyms.map( (gym) => {
+                    return (
+                        <GymInfo gymId={ gym.id } gymName={ gym.name } />
+                    )
+                })
+            }</div>
                 <GymForm addGym={this.addGym}/>
             </div>
         );
