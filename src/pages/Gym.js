@@ -38,16 +38,17 @@ class Gym extends Component {
     }
 
     render() {
+        const storeGyms = this.state.gyms;
+        const showGyms = storeGyms.map( (gym) => {
+            return (
+                <GymInfo key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
+            )
+        });
+
         return (
             <div>
                 <h1>This is the Gym</h1>
-            <div>{
-                this.state.gyms.map( (gym) => {
-                    return (
-                        <GymInfo key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
-                    )
-                })
-            }</div>
+                { showGyms }
                 <GymForm addGym={this.addGym}/>
             </div>
         );
