@@ -3,8 +3,8 @@ import { Route, BrowserRouter, Link } from 'react-router-dom';
 import Header from './components/header'
 import './App.css';
 
-import Home from './screens/Home';
-import Gym from './screens/Gym';
+import Home from './pages/Home';
+import Gym from './pages/Gym';
 
 const App = () => (
   <BrowserRouter>
