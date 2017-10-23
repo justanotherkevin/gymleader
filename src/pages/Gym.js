@@ -48,7 +48,9 @@ class Gym extends Component {
         return (
             <div>
                 <h1>This is the Gym</h1>
-                { showGyms }
+                <div className="gyms-wrapper">
+                    { showGyms }
+                </div>
                 <GymForm addGym={this.addGym}/>
             </div>
         );
