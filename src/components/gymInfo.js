@@ -1,5 +1,4 @@
 import React from 'react';
-
 class GymInfo extends React.Component {
     constructor(props){
         super(props);
@@ -8,7 +7,7 @@ class GymInfo extends React.Component {
     }
     render(props){
         return (
-            <div>
+            <div className="single-gym-wrapper">
                 <p> gym name: { this.gymName }</p>
             </div>
         )
