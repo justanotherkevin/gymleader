@@ -4,8 +4,8 @@ import Fire from '../config/fireConfig';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import GymInfo from '../components/gymInfo/gymInfo';
-import GymForm from '../components/gymform/gymForm';
+import GymInfo from '../components/gymInfo';
+import GymForm from '../components/gymForm';
 
 class Gym extends Component {
     constructor(props) {

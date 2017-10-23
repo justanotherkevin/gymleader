@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gymmap from '../components/map/homeMap';
+import Gymmap from '../components/homeMap';
 
 class Home extends Component {
   render() {
