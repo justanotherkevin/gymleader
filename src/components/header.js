@@ -10,10 +10,16 @@ class Header extends Component {
                     <li><Link to="/gym">Gym</Link></li>
                 </ul>
                 <ul className="left_side">
-                    <li><Link to="/login">Login</Link></li>
+                    { this.props.authenticated
+                        ? (
+                            <li>{this.props.user.displayName}</li>
+                        )
+                        : (
+                            <li><Link to="/login">Login</Link></li>
+                        )
+                    }
                 </ul>
             </div>
-
         )
     }
 }
