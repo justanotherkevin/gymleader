@@ -5,9 +5,12 @@ class Header extends Component {
     render () {
         return (
             <div className="header_wrapper">
-                <ul>
+                <ul className="right_side">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/gym">Gym</Link></li>
+                </ul>
+                <ul className="left_side">
+                    <li><Link to="/login">Login</Link></li>
                 </ul>
             </div>
 
