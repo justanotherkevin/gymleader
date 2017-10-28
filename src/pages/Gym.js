@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Fire from '../config/fireConfig';
+import { fire } from '../config/fireConfig';
 
 import firebase from 'firebase/app';
 import 'firebase/database';
@@ -13,7 +13,7 @@ class Gym extends Component {
         this.state = {
             gyms: [],
         };
-        this.db = Fire.database().ref().child('gyms');
+        this.db = fire.database().ref().child('gyms');
         this.addGym = this.addGym.bind(this)
 
     };
