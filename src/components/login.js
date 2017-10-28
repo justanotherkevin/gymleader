@@ -1,13 +1,37 @@
 import React, { Component } from 'react'
+import { fire, facebookProvider } from '../config/fireConfig';
+
+import { Redirect } from 'react-router-dom'
+import { Button, Position, Toaster, Intent } from "@blueprintjs/core";
+// Toaster for warning message
+const loginStyle = {
+    width: "90%",
+    maxWidth: "315px",
+    margin: "20px auto",
+    border: "1px solid #ddd",
+    borderRadius: "5px",
+    padding: "10px"
+}
 
 class Login extends Component {
   constructor(props) {
     super(props)
     this.authWithFacebook = this.authWithFacebook.bind(this)
     this.authWithEmailPassword = this.authWithEmailPassword.bind(this)
+    this.state = {
+      redirect: false
+    }
   }
   authWithFacebook() {
     console.log("Facebook login")
+    fire.auth().signInWithPopup(facebookProvider)
+    .then((result, error) => {
+      if (error) {
+        this.toaster.show({ intent: Intent.DANGER, message: "Unable to sign in with Facebook", timeout: 5000 })
+      } else {
+        this.setState({redirect: true})
+      }
+    })
   }
   authWithEmailPassword(event) {
     event.preventDefault()
@@ -18,15 +42,22 @@ class Login extends Component {
     })
   }
   render() {
+    if (this.state.redirect === true) {
+      return <Redirect to='/' />
+    }
+
     return (
-      <div>
+      <div style={loginStyle}>
+
+        <Toaster position={Position.TOP_RIGHT}
+          ref={(element) => {this.toaster = element }} />
         <button
           style={{width: "100%"}}
           className="pt-button pt-intent-primary"
           onClick={() => { this.authWithFacebook() }}>
           Log In with Facebook
         </button>
-        <hr style={{marginTop: "10px", marginBottom: "10px"}}/>
+        <hr style={{marginTop: "12px", marginBottom: "12px"}}/>
         <form
           ref={(form) => { this.loginForm = form }}
           onSubmit={(event) => { this.authWithEmailPassword(event) }} >
