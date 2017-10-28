@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter, Link } from 'react-router-dom';
 import Header from './components/header';
+import Login from './components/login';
 import './stylesheets/app.css';
 
 import Home from './pages/Home';
@@ -11,7 +12,7 @@ const App = () => (
     <div>
       <Header/>
       <hr/>
-
+      <Route exact path="/login" component={Login}/>
       <Route exact path="/" component={Home}/>
       <Route path="/gym" component={Gym}/>
     </div>
