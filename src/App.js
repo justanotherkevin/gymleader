@@ -21,7 +21,6 @@ class App extends Component {
     componentWillMount() {
         this.removeAuthListener = fire.auth().onAuthStateChanged((user) => {
             if (user) {
-                console.log(user.displayName)
                 this.setState({
                     authenticated: true,
                     currentUser: user,
