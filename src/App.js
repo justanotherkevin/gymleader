@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Link } from 'react-router-dom';
 import { fire } from './config/fireConfig';
+import { Spinner } from '@blueprintjs/core';
 
 import Header from './components/header';
 import Login from './components/login';
@@ -12,10 +13,10 @@ import './stylesheets/app.css';
 class App extends Component {
     constructor() {
         super();
-        // this.setCurrentUser = this.setCurrentUser.bind(this);
         this.state = {
             authenticated: false,
             currentUser: null,
+            loading: true,
         }
     }
     componentWillMount() {
@@ -24,6 +25,7 @@ class App extends Component {
                 this.setState({
                     authenticated: true,
                     currentUser: user,
+                    loading: false,
                 })
             } else {
                 this.setState({
@@ -37,6 +39,14 @@ class App extends Component {
         this.removeAuthListener();
     }
     render() {
+        if ( this.state.loading === true ) {
+            return (
+                <div style={{ textAlign: "center", position: "absolute", top: "25%", left:"50%" }}>
+                    <h3>Loading</h3>
+                    <Spinner />
+                </div>
+            )
+        }
         return (
             <div>
                 <BrowserRouter>
