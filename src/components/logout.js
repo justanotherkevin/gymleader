@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import { Spinner } from '@blueprintjs/core'
-import { app } from '../base'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import { Spinner } from '@blueprintjs/core';
+import { fire } from '../config/fireConfig';
 
 class Logout extends Component {
     constructor() {
