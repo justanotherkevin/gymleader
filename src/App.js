@@ -5,6 +5,7 @@ import { Spinner } from '@blueprintjs/core';
 
 import Header from './components/header';
 import Login from './components/login';
+import Logout from './components/logout';
 import Home from './pages/Home';
 import Gym from './pages/Gym';
 
@@ -30,6 +31,8 @@ class App extends Component {
             } else {
                 this.setState({
                     authenticated: false,
+                    currentUser: null,
+                    loading: false,
                 })
             }
         })
@@ -56,6 +59,7 @@ class App extends Component {
                         <hr/>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/logout" component={Logout} />
                         <Route path="/gym" component={Gym} />
                     </div>
                 </BrowserRouter>
