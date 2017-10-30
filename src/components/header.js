@@ -12,10 +12,11 @@ class Header extends Component {
                 <ul className="left_side">
                     { this.props.authenticated
                         ? (
-                            <li>{this.props.user.displayName}</li>
+                            <li>{this.props.user.displayName} <Link className="pt-button pt-minimal pt-icon-log-out" to="/logout">Logout</Link></li>
+
                         )
                         : (
-                            <li><Link to="/login">Login</Link></li>
+                            <li><Link className="pt-button pt-minimal pt-icon-log-in" to="/login">Login</Link></li>
                         )
                     }
                 </ul>
