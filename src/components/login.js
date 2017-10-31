@@ -55,8 +55,9 @@ class Login extends Component {
                     this.toaster.show({ intent: Intent.WARNING, message: "Try alternative login." })
                 } else {
                  // sign user in
-                    return app.auth().signInWithEmailAndPassword(email, password)
+                    return fire.auth().signInWithEmailAndPassword(emailInput, passwordInput)
                 }
+            })
             .then((user) => {
                 if (user && user.email) {
                   this.loginForm.reset()
@@ -67,7 +68,6 @@ class Login extends Component {
             .catch((error) => {
                 this.toaster.show({ intent: Intent.DANGER, message: error.message })
             })
-        })
     }
     render() {
         if (this.state.redirect === true) {
