@@ -4,18 +4,20 @@ import { fire } from '../config/fireConfig';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import GymSample from '../components/';
+import GymSample from '../components/gymSample';
 import GymForm from '../components/gymForm';
+import GymInfo from '../components/gymInfo';
 
 class Gym extends Component {
     constructor(props) {
         super(props);
         this.state = {
             gyms: [],
+            selectedGym: null,
         };
         this.db = fire.database().ref().child('gyms');
-        this.addGym = this.addGym.bind(this)
-
+        this.addGym = this.addGym.bind(this);
+        this.setSelectedGym = this.setSelectedGym.bind(this);
     };
 
     componentWillMount() {
@@ -36,12 +38,19 @@ class Gym extends Component {
         // gym need to be an object with ID and stuff. ex. {id:1, name: 'kickass'}
         this.db.push().set({ gymName: gym});
     }
-
+    setSelectedGym(gym) {
+        console.log(gym)
+        this.setState({
+            selectedGym: gym
+        })
+    }
     render() {
-        const storeGyms = this.state.gyms;
-        const showGyms = storeGyms.map( (gym) => {
+        const showGyms = this.state.gyms.map( (gym) => {
             return (
-                <GymSample key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
+                <GymSample key={ gym.id }
+                    sampleGym={ gym }
+                    selecteGym={this.setSelectedGym}
+                />
             )
         });
 
@@ -52,6 +61,7 @@ class Gym extends Component {
                     { showGyms }
                 </div>
                 <GymForm addGym={this.addGym}/>
+                <GymInfo selectedGym={this.state.selectedGym}/>
             </div>
         );
     }
