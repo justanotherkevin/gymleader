@@ -39,7 +39,6 @@ class Gym extends Component {
         this.db.push().set({ gymName: gym});
     }
     setSelectedGym(gym) {
-        console.log(gym)
         this.setState({
             selectedGym: gym
         })
