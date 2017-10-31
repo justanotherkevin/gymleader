@@ -4,7 +4,7 @@ import { fire } from '../config/fireConfig';
 import firebase from 'firebase/app';
 import 'firebase/database';
 
-import GymInfo from '../components/gymInfo';
+import GymSample from '../components/';
 import GymForm from '../components/gymForm';
 
 class Gym extends Component {
@@ -41,7 +41,7 @@ class Gym extends Component {
         const storeGyms = this.state.gyms;
         const showGyms = storeGyms.map( (gym) => {
             return (
-                <GymInfo key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
+                <GymSample key={ gym.id } gymId={ gym.id } gymName={ gym.name } />
             )
         });
 
