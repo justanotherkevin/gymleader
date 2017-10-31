@@ -44,19 +44,29 @@ class Login extends Component {
         const emailInput = this.emailInput.value
         const passwordInput = this.passwordInput.value
 
-        fire.auth().fetchProvidersForEmail(emailInput).then( (providers) => {
-            debugger
-            if (providers.length === 0 ) {
-                // if firebase can't find any providers with emailInput = create new user
-                return fire.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
-            } else if (providers.indexOf("password") === -1) {
-                // user signed up with facebook
-                this.loginForm.reset()
-                this.toaster.show({ intent: Intent.WARNING, message: "Try alternative login." })
-            } else {
-             // sign user in
-                return app.auth().signInWithEmailAndPassword(email, password)
-            }
+        fire.auth().fetchProvidersForEmail(emailInput)
+            .then( (providers) => {
+                if (providers.length === 0 ) {
+                    // if firebase can't find any providers with emailInput = create new user
+                    return fire.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
+                } else if (providers.indexOf("password") === -1) {
+                    // user signed up with facebook
+                    this.loginForm.reset()
+                    this.toaster.show({ intent: Intent.WARNING, message: "Try alternative login." })
+                } else {
+                 // sign user in
+                    return app.auth().signInWithEmailAndPassword(email, password)
+                }
+            .then((user) => {
+                if (user && user.email) {
+                  this.loginForm.reset()
+                  this.props.setCurrentUser(user)
+                  this.setState({redirect: true})
+                }
+            })
+            .catch((error) => {
+                this.toaster.show({ intent: Intent.DANGER, message: error.message })
+            })
         })
     }
     render() {
