@@ -14,6 +14,7 @@ import './stylesheets/app.css';
 class App extends Component {
     constructor() {
         super();
+        this.setCurrentUser = this.setCurrentUser.bind(this);
         this.state = {
             authenticated: false,
             currentUser: null,
@@ -37,10 +38,22 @@ class App extends Component {
             }
         })
     }
-
     componentWillUnmount() {
         this.removeAuthListener();
     }
+    setCurrentUser(user) {
+       if (user) {
+         this.setState({
+           currentUser: user,
+           authenticated: true
+         })
+       } else {
+         this.setState({
+           currentUser: null,
+           authenticated: false
+         })
+       }
+     }
     render() {
         if ( this.state.loading === true ) {
             return (
@@ -58,7 +71,11 @@ class App extends Component {
                             user={this.state.currentUser}/>
                         <hr/>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/login" component={Login} />
+                        <Route exact path="/login"
+                            render={ (props) => {
+                                return <Login setCurrentUser={this.setCurrentUser} {...props} />
+                            }}
+                        />
                         <Route exact path="/logout" component={Logout} />
                         <Route path="/gym" component={Gym} />
                     </div>
