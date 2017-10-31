@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {fire, facebookProvider} from '../config/fireConfig';
+import React, { Component } from "react";
+import { fire, facebookProvider } from "../config/fireConfig";
 
-import {Redirect} from 'react-router-dom'
-import {Button, Position, Toaster, Intent} from "@blueprintjs/core";
+import { Redirect } from "react-router-dom";
+import { Button, Position, Toaster, Intent } from "@blueprintjs/core";
 // Toaster for warning message
 const loginStyle = {
     width: "90%",
@@ -11,87 +11,143 @@ const loginStyle = {
     border: "1px solid #ddd",
     borderRadius: "5px",
     padding: "10px"
-}
+};
 
 class Login extends Component {
     constructor(props) {
-        super(props)
-        this.authWithFacebook = this.authWithFacebook.bind(this)
-        this.authWithEmailPassword = this.authWithEmailPassword.bind(this)
+        super(props);
+        this.authWithFacebook = this.authWithFacebook.bind(this);
+        this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
         this.state = {
             redirect: false
-        }
+        };
     }
     authWithFacebook() {
-        console.log("Facebook login")
-        fire.auth().signInWithPopup(facebookProvider).then((result, error) => {
-            if (error) {
-                this.toaster.show({intent: Intent.DANGER, message: "Unable to sign in with Facebook", timeout: 5000})
+        ( fire.auth()
+            .signInWithPopup(facebookProvider)
+            .then((result, error) => {
+                if (error) {
+                    this.toaster.show({
+                        intent: Intent.DANGER,
+                        message: "Unable to sign in with Facebook",
+                        timeout: 5000
+                    });
+                } else {
+                    this.setState({ redirect: true });
+                }
+            })
+        )
+    }
+    authWithEmailPassword(event) {
+        event.preventDefault();
+        // using form's ref={input => {this.passwordInput = input;}}
+        const emailInput = this.emailInput.value
+        const passwordInput = this.passwordInput.value
+
+        fire.auth().fetchProvidersForEmail(emailInput).then( (providers) => {
+            debugger
+            if (providers.length === 0 ) {
+                // if firebase can't find any providers with emailInput = create new user
+                return fire.auth().createUserWithEmailAndPassword(emailInput, passwordInput)
+            } else if (providers.indexOf("password") === -1) {
+                // user signed up with facebook
+                this.loginForm.reset()
+                this.toaster.show({ intent: Intent.WARNING, message: "Try alternative login." })
             } else {
-                this.setState({redirect: true})
+             // sign user in
+                return app.auth().signInWithEmailAndPassword(email, password)
             }
         })
     }
-    authWithEmailPassword(event) {
-        event.preventDefault()
-        console.log("with email and password")
-        console.table({email: this.emailInput.value, password: this.passwordInput.value})
-    }
     render() {
         if (this.state.redirect === true) {
-            return <Redirect to='/'/>
+            return <Redirect to="/" />;
         }
 
         return (
             <div style={loginStyle}>
-
-                <Toaster position={Position.TOP_RIGHT} ref={(element) => {
-                    this.toaster = element
-                }}/>
-                <button style={{
-                    width: "100%"
-                }} className="pt-button pt-intent-primary" onClick={() => {
-                    this.authWithFacebook()
-                }}>
+                <Toaster
+                    position={Position.TOP_RIGHT}
+                    ref={element => {
+                        this.toaster = element;
+                    }}
+                />
+                <button
+                    style={{
+                        width: "100%"
+                    }}
+                    className="pt-button pt-intent-primary"
+                    onClick={() => {
+                        this.authWithFacebook();
+                    }}
+                >
                     Log In with Facebook
                 </button>
-                <hr style={{
-                    marginTop: "12px",
-                    marginBottom: "12px"
-                }}/>
-                <form ref={(form) => {
-                    this.loginForm = form
-                }} onSubmit={(event) => {
-                    this.authWithEmailPassword(event)
-                }}>
-                    <div style={{
-                        marginBottom: "10px"
-                    }} className="pt-callout pt-icon-info-sign">
+                <hr
+                    style={{
+                        marginTop: "12px",
+                        marginBottom: "12px"
+                    }}
+                />
+                <form
+                    ref={form => {
+                        this.loginForm = form;
+                    }}
+                    onSubmit={event => {
+                        this.authWithEmailPassword(event);
+                    }}
+                >
+                    <div
+                        style={{
+                            marginBottom: "10px"
+                        }}
+                        className="pt-callout pt-icon-info-sign"
+                    >
                         <h5>Note</h5>
-                        If you don't have an account already, this form will create your account.
+                        If you don't have an account already, this form will
+                        create your account.
                     </div>
                     <label className="pt-label">
                         Email
-                        <input style={{
-                            width: "100%"
-                        }} className="pt-input" name="email" type="email" ref={(input) => {
-                            this.emailInput = input
-                        }} placeholder="Email"></input>
+                        <input
+                            style={{
+                                width: "100%"
+                            }}
+                            className="pt-input"
+                            name="email"
+                            type="email"
+                            ref={input => {
+                                this.emailInput = input;
+                            }}
+                            placeholder="Email"
+                        />
                     </label>
                     <label className="pt-label">
                         Password
-                        <input style={{
-                            width: "100%"
-                        }} className="pt-input" name="password" type="password" ref={(input) => {
-                            this.passwordInput = input
-                        }} placeholder="Password"></input>
+                        <input
+                            style={{
+                                width: "100%"
+                            }}
+                            className="pt-input"
+                            name="password"
+                            type="password"
+                            ref={input => {
+                                this.passwordInput = input;
+                            }}
+                            placeholder="Password"
+                        />
                     </label>
-                    <input style={{
-                        width: "100%"
-                    }} type="submit" className="pt-button pt-intent-primary" value="Log In"></input>
+                    <input
+                        style={{
+                            width: "100%"
+                        }}
+                        type="submit"
+                        className="pt-button pt-intent-primary"
+                        value="Log In"
+                    />
                 </form>
             </div>
-        )
+        );
     }
 }
-export default Login
+export default Login;
