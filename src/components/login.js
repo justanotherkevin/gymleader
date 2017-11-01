@@ -16,13 +16,11 @@ const loginStyle = {
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.authWithFacebook = this.authWithFacebook.bind(this);
-        this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
         this.state = {
             redirect: false
         };
     }
-    authWithFacebook() {
+    authWithFacebook = () =>  {
         ( fire.auth()
             .signInWithPopup(facebookProvider)
             .then((result, error) => {
@@ -38,7 +36,7 @@ class Login extends Component {
             })
         )
     }
-    authWithEmailPassword(event) {
+    authWithEmailPassword = (event) => {
         event.preventDefault();
         // using form's ref={input => {this.passwordInput = input;}}
         const emailInput = this.emailInput.value
