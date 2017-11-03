@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { fire } from '../config/fireConfig';
-
-import firebase from 'firebase/app';
 import 'firebase/database';
+import { fire } from '../config/fireConfig';
 
 import GymSample from '../components/gymSample';
 import GymForm from '../components/gymForm';
@@ -36,7 +34,6 @@ class Gym extends Component {
     }
 
     addGym(name, location) {
-        // gym need to be an object with ID and stuff. ex. {id:1, name: 'kickass'}
         this.db.push().set({ name: name, location: location});
     }
     setSelectedGym(gym) {

@@ -80,7 +80,7 @@ class Login extends Component {
                         this.toaster = element;
                     }}
                 />
-                <button
+                <Button
                     style={{
                         width: "100%"
                     }}
@@ -90,7 +90,7 @@ class Login extends Component {
                     }}
                 >
                     Log In with Facebook
-                </button>
+                </Button>
                 <hr
                     style={{
                         marginTop: "12px",

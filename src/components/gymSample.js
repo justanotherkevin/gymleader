@@ -1,10 +1,8 @@
 import React from 'react';
-import { Button, Position, Toaster, Intent } from "@blueprintjs/core";
+import { Button } from "@blueprintjs/core";
 
 class GymSample extends React.Component {
-    constructor(props){
-        super(props);
-    }
+
     render(){
         return (
             <div className="single-gym-wrapper">
