@@ -3,34 +3,30 @@ import React, { Component } from 'react';
 class GymForm extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            newGymInfo: '',
-        };
-        this.handleUserInput = this.handleUserInput.bind(this);
-        this.handleUserSubmit = this.handleUserSubmit.bind(this);
     };
-    handleUserInput(e) {
-        this.setState({
-            newGymInfo: e.target.value,
-        })
-    };
-    handleUserSubmit() {
-        this.props.addGym(this.state.newGymInfo)
-        this.setState({
-            newGymInfo: '',
-        })
+    handleUserSubmit = (e) => {
+        e.preventDefault()
+        this.props.addGym(this.refs.gym_name.value, this.refs.gym_location.value)
     }
     render() {
         return(
             <div className="gymForm_wrapper">
-                <input className="gymForm"
-                    placeholder="enter a gym name"
-                    value={this.state.newGymInfo}
-                    onChange={this.handleUserInput}
-                />
-                <button className="gymForm_button"
-                    onClick={this.handleUserSubmit}
-                >Add gym button</button>
+                <form className="new_gym_form"
+                    ref="new_gym_form">
+                    <input className="new_gym_name"
+                        placeholder="enter a gym name"
+                        ref="gym_name"
+                    />
+                    <input className="new_gym_location"
+                        placeholder="enter location"
+                        ref="gym_location"
+                    />
+                    <button className="gymForm_button"
+                        onClick={this.handleUserSubmit}
+                        >Add gym button
+                    </button>
+                    <input type="hidden" value="Submit" />
+                </form>
             </div>
         )
     };
