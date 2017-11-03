@@ -26,7 +26,8 @@ class Gym extends Component {
         this.db.on('child_added', snap => {
             currentGyms.push({
                 id: snap.key,
-                name: snap.val().gymName,
+                name: snap.val().name,
+                location: snap.val().location
             })
             this.setState({
                 gyms: currentGyms
@@ -34,9 +35,9 @@ class Gym extends Component {
         })
     }
 
-    addGym(gym) {
+    addGym(name, location) {
         // gym need to be an object with ID and stuff. ex. {id:1, name: 'kickass'}
-        this.db.push().set({ gymName: gym});
+        this.db.push().set({ name: name, location: location});
     }
     setSelectedGym(gym) {
         this.setState({
