@@ -1,9 +1,10 @@
 .gyms-wrapper {
     display: flex;
-    
+    flex-wrap: wrap;
+
     .single-gym-wrapper {
         background: #2196F3;
         padding:10px;
-        margin: 0 10px;
+        margin: 10px;
     }
 }
