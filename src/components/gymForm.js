@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class GymForm extends Component {
-    constructor(props) {
-        super(props);
-    };
     handleUserSubmit = (e) => {
         e.preventDefault()
         this.props.addGym(this.refs.gym_name.value, this.refs.gym_location.value)
