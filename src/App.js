@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Link } from 'react-router-dom';
 import { fire } from './config/fireConfig';
-import { Spinner } from '@blueprintjs/core';
 
 import Header from './components/header';
 import Login from './components/login';
@@ -55,20 +54,13 @@ class App extends Component {
        }
      }
     render() {
-        if ( this.state.loading === true ) {
-            return (
-                <div style={{ textAlign: "center", position: "absolute", top: "25%", left:"50%" }}>
-                    <h3>Loading</h3>
-                    <Spinner />
-                </div>
-            )
-        }
         return (
             <div>
                 <BrowserRouter>
                     <div>
                         <Header authenticated={this.state.authenticated}
-                            user={this.state.currentUser}/>
+                            user={this.state.currentUser}
+                            loading={this.state.loading} />
                         <hr/>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/login"
