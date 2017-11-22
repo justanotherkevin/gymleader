@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from "react-router-dom";
 
 class GymInfo extends React.Component {
     render() {
@@ -8,11 +9,14 @@ class GymInfo extends React.Component {
                 <div>
                     <p>this is new gyminfo</p>
                     <p>{gym.name}</p>
+                    <p>{gym.location}</p>
                 </div>
             )
         } else {
             return (
-                <div>loading...</div>
+                <div>
+                    <button type="button" className="pt-button pt-large pt-icon-add">Add your gym to profile</button>
+                </div>
             )
         }
 

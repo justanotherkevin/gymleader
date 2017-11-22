@@ -11,6 +11,7 @@ class Home extends Component {
                 <h1>This is the Home</h1>
                 <Gymmap />
                 {hello()}
+                <h4>Advertisment! Make money</h4>
             </div>
         );
     }
