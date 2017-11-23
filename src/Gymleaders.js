@@ -60,35 +60,33 @@ class Gymleaders extends Component {
 
     render() {
         return (
-            <div>
-                <Provider store={ store }>
-                    <BrowserRouter>
-                        <div>
-                            <Navbar
-                                authenticated={this.state.authenticated}
-                                user={this.state.currentUser}
-                                loading={this.state.loading}
-                            />
-                            <hr />
-                            <Route exact path="/" component={Home} />
-                            <Route
-                                exact
-                                path="/login"
-                                render={props => {
-                                    return (
-                                        <Login
-                                            setCurrentUser={this.setCurrentUser}
-                                            {...props}
-                                        />
-                                    );
-                                }}
-                            />
-                            <Route exact path="/logout" component={Logout} />
-                            <Route path="/gym" component={ Gym } />
-                        </div>
-                    </BrowserRouter>
-                </Provider>
-            </div>
+            <Provider store={ store }>
+                <BrowserRouter>
+                    <div className="app">
+                        <Navbar
+                            authenticated={this.state.authenticated}
+                            user={this.state.currentUser}
+                            loading={this.state.loading}
+                        />
+                        <hr />
+                        <Route exact path="/" component={Home} />
+                        <Route
+                            exact
+                            path="/login"
+                            render={props => {
+                                return (
+                                    <Login
+                                        setCurrentUser={this.setCurrentUser}
+                                        {...props}
+                                    />
+                                );
+                            }}
+                        />
+                        <Route exact path="/logout" component={Logout} />
+                        <Route path="/gym" component={ Gym } />
+                    </div>
+                </BrowserRouter>
+            </Provider>
         );
     }
 }
