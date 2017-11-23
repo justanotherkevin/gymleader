@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { Route, BrowserRouter } from "react-router-dom";
 import { fire } from "./config/fireConfig";
 
-import Header from "./components/header";
+import Navbar from "./components/navbar";
 import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./pages/Home";
@@ -64,7 +64,7 @@ class Gymleaders extends Component {
                 <Provider store={ store }>
                     <BrowserRouter>
                         <div>
-                            <Header
+                            <Navbar
                                 authenticated={this.state.authenticated}
                                 user={this.state.currentUser}
                                 loading={this.state.loading}
