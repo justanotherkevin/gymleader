@@ -68,7 +68,6 @@ class Gymleaders extends Component {
                             user={this.state.currentUser}
                             loading={this.state.loading}
                         />
-                        <hr />
                         <Route exact path="/" component={Home} />
                         <Route
                             exact
