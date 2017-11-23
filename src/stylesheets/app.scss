@@ -5,3 +5,47 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+#mainNav {
+  background-color: #212529;
+  .navbar-toggler {
+    font-size: 12px;
+    right: 0;
+    padding: 13px;
+    text-transform: uppercase;
+    color: #fff;
+    border: 0;
+    background-color: #fe000d;
+    font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+  }
+  .navbar-brand {
+    color: #fe000d;
+    font-family: 'Kaushan Script','Helvetica Neue',Helvetica,Arial,cursive;
+    &.active, &:active, &:focus, &:hover {
+      color: #cb000a;
+    }
+  }
+  .navbar-nav .nav-item .nav-link {
+    font-size: 90%;
+    font-weight: 400;
+    padding: .75em 0;
+    letter-spacing: 1px;
+    color: #fff;
+    font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    &.active, &:hover {
+      color: #fe000d;
+    }
+  }
+}
+
+.home {
+  height: 100vh;
+  padding-top: 350px;
+  text-align: center;
+  h1 {
+    margin: 0;
+  }
+}
+.home {
+  background: url('../img/kb1.jpg');
+  background-size: cover;
+}
