@@ -14,7 +14,7 @@ class Header extends Component {
         }
         return (
             <nav className="navbar navbar-dark navbar-expand-lg fixed-top" id="mainNav">
-                <div className="container-fluid container"><a className="navbar-brand" href="#">Brand</a>
+                <div className="container-fluid container"><a className="navbar-brand" href="#">GymLeaders</a>
                     <button className="navbar-toggler" data-toggle="collapse" data-target="#navbarResponsive">
                         <span className="sr-only">Toggle navigation</span>
                         <span className="navbar-toggler-icon"></span>
