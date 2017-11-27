@@ -24,4 +24,4 @@ fireConfig.js
 yelpConfig.js
 
 #css file
-.css
+*.css
