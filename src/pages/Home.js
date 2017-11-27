@@ -10,24 +10,16 @@ class Home extends Component {
       backgroundImage: "url('/src/img/kb1.jpg')"
     };
     return (
-      <div className="home" >
-        <header
-          className="masthead"
-        >
-          <div className="container">
+      <div className="home-wrapper" >
+        <header className="home-header">
+          <div className="home-signup-container">
             <div className="intro-text">
-              <div className="intro-lead-in">
-                <span>Welcome To Our Studio! </span>
-              </div>
-              <div className="intro-heading text-uppercase">
-                <span>It's Nice To Meet You </span>
-              </div>
-              <a
-                href="#"
-                className="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-              >Sign me up
-              </a>
+              <h2>Welcome To Our Studio! </h2>
             </div>
+            <a className="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+              href="#" >
+              Sign me up
+            </a>
           </div>
         </header>
         <Gymmap />
