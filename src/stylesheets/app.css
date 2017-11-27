@@ -37,13 +37,12 @@ body {
     #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
       color: #fe000d; }
 
-.home {
-  height: 100vh;
-  padding-top: 350px;
+.home-wrapper {
   text-align: center; }
-  .home h1 {
-    margin: 0; }
-
-.home {
-  background: url("../img/kb1.jpg");
-  background-size: cover; }
+  .home-wrapper .home-header {
+    background: url("../img/kb1.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
