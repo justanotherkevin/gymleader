@@ -27,11 +27,15 @@ body {
   .navbar-nav .nav-item .nav-link {
     font-size: 90%;
     font-weight: 400;
-    padding: .75em 0;
+    padding: .75em .7em;
     letter-spacing: 1px;
     color: #fff;
     font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
-    &.active, &:hover {
+    &.active {
+      color: #fe000d;
+      pointer-events: none;
+    }
+    &:hover {
       color: #fe000d;
     }
   }
