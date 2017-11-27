@@ -23,5 +23,5 @@ yarn-error.log*
 fireConfig.js
 yelpConfig.js
 
-#css file
+# css file
 *.css
