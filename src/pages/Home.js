@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import Gymmap from "../components/homeMap";
+import secret from "../secret.json";
 
 class Home extends Component {
   render() {
+    const mapURL = `https://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C62.107733,-145.541936&markers=size:tiny%7Ccolor:green%7CDelta+Junction,AK&markers=size:mid%7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK"&key=${secret.googleMapKey}`
+
     const hello = () => {
       return <h2>this is some random constant</h2>;
-    };
-    const avatarStyle ={
-      backgroundImage: "url('/src/img/kb1.jpg')"
     };
     return (
       <div className="home-wrapper" >
@@ -22,7 +22,9 @@ class Home extends Component {
             </a>
           </div>
         </header>
-        <Gymmap />
+        <div className="home-map-wrapper">
+          <img src={mapURL} ></img>
+        </div>
         {hello()}
         <h4>Advertisment! Make money</h4>
       </div>
