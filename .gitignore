@@ -25,3 +25,6 @@ yelpConfig.js
 
 # css file
 *.css
+
+# secret keys
+secret.json
