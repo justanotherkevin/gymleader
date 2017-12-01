@@ -26,7 +26,6 @@ class Home extends Component {
           <img src={mapURL} ></img>
         </div>
         {hello()}
-        <h4>Advertisment! Make money</h4>
       </div>
     );
   }
