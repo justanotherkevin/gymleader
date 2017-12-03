@@ -1,7 +1,0 @@
-.gympage-wrapper .gyms-wrapper {
-  display: flex;
-  flex-wrap: wrap; }
-  .gympage-wrapper .gyms-wrapper .single-gym-wrapper {
-    background: #2196F3;
-    padding: 10px;
-    margin: 10px; }
