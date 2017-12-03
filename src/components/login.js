@@ -75,7 +75,7 @@ class Login extends Component {
         return (
             <div style={loginStyle}>
                 <Toaster
-                    position={Position.TOP_RIGHT}
+                    position={Position.BOTTOM_RIGHT}
                     ref={element => {
                         this.toaster = element;
                     }}
