@@ -8,6 +8,7 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import Home from "./pages/Home";
 import Gym from "./pages/Gym";
+import UserPage from "./pages/User";
 
 // import App from "./components/app";
 import store from "./store/store";
@@ -83,6 +84,7 @@ class Gymleaders extends Component {
                         />
                         <Route exact path="/logout" component={Logout} />
                         <Route path="/gym" component={ Gym } />
+                        <Route path="/user" component={ UserPage } currentUser={this.state.currentUser}/>
                     </div>
                 </BrowserRouter>
             </Provider>
