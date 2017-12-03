@@ -1,7 +1,7 @@
-.gyms-wrapper {
+.gympage-wrapper .gyms-wrapper {
   display: flex;
   flex-wrap: wrap; }
-  .gyms-wrapper .single-gym-wrapper {
+  .gympage-wrapper .gyms-wrapper .single-gym-wrapper {
     background: #2196F3;
     padding: 10px;
     margin: 10px; }
@@ -30,11 +30,14 @@ body {
   #mainNav .navbar-nav .nav-item .nav-link {
     font-size: 90%;
     font-weight: 400;
-    padding: .75em 0;
+    padding: .75em .7em;
     letter-spacing: 1px;
     color: #fff;
     font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif; }
-    #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
+    #mainNav .navbar-nav .nav-item .nav-link.active {
+      color: #fe000d;
+      pointer-events: none; }
+    #mainNav .navbar-nav .nav-item .nav-link:hover {
       color: #fe000d; }
 
 .home-wrapper {

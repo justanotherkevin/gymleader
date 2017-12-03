@@ -23,8 +23,10 @@ yarn-error.log*
 fireConfig.js
 yelpConfig.js
 
-# css-file
-**.css
+package-lock.json
 
-# secret keys
+# all css
+*.css
+
+# secretkeys
 secret.json

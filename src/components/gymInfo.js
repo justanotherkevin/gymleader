@@ -7,7 +7,7 @@ class GymInfo extends React.Component {
         if (gym) {
             return (
                 <div>
-                    <p>this is new gyminfo</p>
+                    <h1>this is new gyminfo</h1>
                     <p>{gym.name}</p>
                     <p>{gym.location}</p>
                 </div>
