@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Gymmap from "../components/homeMap";
 import secret from "../secret.json";
 
 class Home extends Component {
